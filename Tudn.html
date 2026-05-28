@@ -1,115 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Watch TUDN | Fluxify-TV</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TUDN | Fluxify-TV</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      font-family: sans-serif;
+      color: white;
+      text-align: center;
+    }
 
-<script src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+    h1 {
+      margin: 20px 0;
+      font-size: 24px;
+    }
 
-<style>
-  body {
-    margin: 0;
-    background: #000;
-    color: white;
-    font-family: sans-serif;
-    text-align: center;
-  }
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      margin: 0 auto 20px auto;
+    }
 
-  #player-container {
-    width: 100%;
-    max-width: 720px;
-    margin: 30px auto;
-    position: relative;
-  }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
 
-  #overlay-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
+  <h1>Watch TUDN | Fluxify-TV</h1>
 
-  .watermark {
-    position: absolute;
-    z-index: 999;
-    pointer-events: none;
-    opacity: 0.7;
-  }
+ <html lang="en">
+<head>
+  <meta charset="UTF-8"></meta>
+  <meta content="width=device-width, initial-scale=1" name="viewport"></meta>
+  <title>Watch TUDN</title>
 
-  .top-left {
-    top: 10px;
-    left: 10px;
-    max-width: 140px;
-    max-height: 55px;
-  }
+  <script src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
 
-  .watermark img {
-    width: 100%;
-    height: auto;
-  }
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: white;
+      text-align: center;
+      font-family: sans-serif;
+    }
 
-  .channel-info {
-    max-width: 720px;
-    margin: 20px auto;
-    padding: 15px;
-    text-align: left;
-    color: #d1d5db;
-    line-height: 1.6;
-    font-size: 15px;
-  }
+    #player-container {
+      width: 100%;
+      max-width: 640px;
+      margin: 20px auto;
+      position: relative;
+    }
 
-  .badge {
-    display: inline-block;
-    background: linear-gradient(135deg,#e50914,#ff5e00);
-    padding: 6px 12px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: white;
-  }
-</style>
+    #overlay-title {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .watermark {
+      position: absolute;
+      z-index: 999;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .top-left {
+      top: 10px;
+      left: 10px;
+      max-width: 150px;   /* bigger logo */
+      max-height: 60px;   /* bigger logo */
+    }
+
+    .watermark img {
+      max-width: 100%;
+      max-height: 100%;
+      background: transparent; /* ensure transparency */
+    }
+  </style>
 </head>
 
 <body>
 
-<div id="player-container">
-
-  <div id="overlay-title">TUDN Live</div>
-
-  <div id="player-wrapper"></div>
-
-  <div class="watermark top-left">
-    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhH4RViNO5WYJnkh72TMJAte4E7CmlaSIQCe9mlmfH-R8R6eaxHH5Xm_SlY5ZI1yD6j1lqz8VLU7WbEWCDYqdpmf4iDrPtoSyTdJRGWvK8LacZ5cA_UO9x1Q-M_lZb-jZQSCRSoqHEf7kQ0Cm7Lz7itm6nMQzxqUvBfJRQCUccWUaeOJlI17nird00dgYOX/s320/fluxify.png" alt="Fluxify-TV">
+  <div id="player-container">
+    <div id="overlay-title">Watch TUDN</div>
+    <div id="player-wrapper"></div>
   </div>
 
-</div>
+  <script>
+    const tvIcon = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiKKulybluDSRDdbHlu3Wc0-pBUdoznxSJzbThCPXjLp6tMGIKhjFtL_2Vm1ozc9NyRHjSoHedrAIrkbUNwhkS-0t90L858KWuIE9O23sM_40quv_AdvEw9A9Xk0aUgo64hW2obj509C50QGnpvaAT3yJVra6r4Gd5a2tGyCddzaxvDk5wpPU8NLYm7wLA/s320/ChrisJorgeTelevison2-icon.png';
 
-<!-- DESCRIPTION -->
-<div class="channel-info">
+    const TVWatermarkPlugin = Clappr.UIContainerPlugin.extend({
+      name: 'tv_watermark',
+      initialize() {
+        this.render();
+      },
+      render() {
+        // Top-left watermark only
+        const topLeft = document.createElement('div');
+        topLeft.className = 'watermark top-left';
+        topLeft.innerHTML = `<img src="${tvIcon}" />`;
+        this.container.$el.append(topLeft);
+      }
+    });
 
-  <span class="badge">LIVE CHANNEL</span>
+    new Clappr.Player({
+      parentId: '#player-wrapper',
+      source: 'https://streaming-live-fcdn.api.prd.univisionnow.com/tudn/tudn.isml/hls/tudn.m3u8',
+      poster: '',
+      mute: true,
+      height: 360,
+      width: '100%',
+      plugins: [TVWatermarkPlugin]
+    });
+  </script>
 
-  <h2>TUDN</h2>
-
-  <p>
-    TUDN is a leading Spanish-language sports network that delivers live coverage of football (soccer), 
-    including Liga MX, UEFA competitions, international friendlies, and major tournaments. 
-    It also features boxing, UFC, and sports news with expert analysis and commentary for fans across the Americas.
-  </p>
-
-</div>
-
-<script>
-  new Clappr.Player({
-    parentId: '#player-wrapper',
-    source: 'https://streaming-live-fcdn.api.prd.univisionnow.com/tudn/tudn.isml/hls/tudn.m3u8',
-    width: '100%',
-    height: 360,
-    autoPlay: true,
-    mute: true
-  });
-</script>
+</body>
+  </div>
 
 </body>
 </html>
