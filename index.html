@@ -1,251 +1,195 @@
-<!-- GOOGLE FONT -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Live TV</title>
+
+<!-- FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* BLOGGER FIX */
-body .main-inner,
-body .content-outer,
-body .content-fauxcolumn-outer{
-  max-width:100% !important;
-  padding:0 !important;
-  margin:0 !important;
+:root{
+  --bg:#05070d;
+  --accent:#1f80e0;
+  --muted:#a9b3c7;
 }
+
+*{box-sizing:border-box}
 
 body{
   margin:0;
-  background:#05070d;
   font-family:'Poppins',sans-serif;
-  color:white;
+  background: radial-gradient(circle at top, #0b1220, var(--bg));
+  color:#fff;
+  overflow-x:hidden;
 }
 
 /* HERO */
 .hero{
   position:relative;
-  height:65vh;
-  background:
-  linear-gradient(to top,rgba(0,0,0,.88),rgba(0,0,0,.35)),
-  url('https://images.unsplash.com/photo-1601944177325-f8867652837f?q=80&w=1470') center/cover no-repeat;
+  height:70vh;
   display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:flex-start;
-  padding:50px;
-  overflow:hidden;
+  align-items:flex-end;
+  padding:60px 40px;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.85),rgba(0,0,0,.3)),
+    url('https://images.unsplash.com/photo-1601944177325-f8867652837f?q=80&w=1470') center/cover no-repeat;
 }
 
-.hero::before{
+.hero::after{
   content:'';
   position:absolute;
   inset:0;
-  backdrop-filter:blur(2px);
+  background: radial-gradient(circle at bottom left, rgba(31,128,224,.25), transparent 60%);
 }
 
 .hero-content{
   position:relative;
   z-index:2;
-  max-width:700px;
+  max-width:650px;
+  backdrop-filter: blur(8px);
+  padding:20px;
+  border-radius:16px;
 }
 
 .hero h1{
-  font-size:52px;
+  font-size:54px;
   margin:0;
-  font-weight:700;
-  line-height:1.1;
 }
 
 .hero p{
-  margin-top:15px;
-  color:#ddd;
-  font-size:18px;
+  color:var(--muted);
+  margin-top:10px;
 }
 
-/* DISCORD BUTTON */
+/* BUTTON */
 .discord-btn{
   display:inline-block;
-  margin-top:25px;
-  background:linear-gradient(135deg,#5865F2,#404EED);
-  color:#fff !important;
-  padding:14px 28px;
-  border-radius:50px;
+  margin-top:20px;
+  padding:14px 26px;
+  border-radius:999px;
+  background:linear-gradient(135deg,var(--accent),#3aa0ff);
+  color:#fff;
   text-decoration:none;
   font-weight:600;
-  transition:.3s;
-  box-shadow:0 0 20px rgba(88,101,242,.4);
 }
 
-.discord-btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 0 25px rgba(88,101,242,.8);
-}
-
-/* CATEGORY BAR */
+/* CATEGORIES */
 .categories{
   display:flex;
-  gap:12px;
+  gap:10px;
+  padding:16px 20px;
   overflow-x:auto;
-  padding:20px;
-  background:#0d111b;
-  border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.categories::-webkit-scrollbar{
-  display:none;
+  background:rgba(10,15,25,.8);
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.06);
 }
 
 .cat-btn{
-  padding:12px 22px;
-  border-radius:30px;
-  background:#151b27;
+  padding:10px 18px;
+  border-radius:999px;
+  background:rgba(255,255,255,.04);
   border:1px solid rgba(255,255,255,.08);
+  color:var(--muted);
   cursor:pointer;
   white-space:nowrap;
-  transition:.3s;
-  font-weight:500;
+  transition:.2s;
 }
 
-.cat-btn:hover,
 .cat-btn.active{
-  background:#1f80e0;
-  box-shadow:0 0 15px rgba(31,128,224,.5);
-}
-
-/* SECTION */
-.section{
-  padding:35px 20px;
+  background:var(--accent);
+  color:#fff;
 }
 
 /* GRID */
+.section{padding:30px 20px;}
+
 .row{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
-  gap:22px;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:18px;
 }
 
 /* CARD */
 .card{
-  background:#0f1420;
-  border-radius:18px;
+  background:#0f1626;
+  border-radius:16px;
   overflow:hidden;
   text-decoration:none;
-  transition:.35s;
-  border:1px solid rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.06);
+  transition:.25s;
   position:relative;
 }
 
 .card:hover{
-  transform:translateY(-8px) scale(1.03);
-  box-shadow:0 10px 25px rgba(0,0,0,.55);
-  border-color:#1f80e0;
+  transform:scale(1.06);
+  border-color:rgba(31,128,224,.6);
+  box-shadow:0 18px 40px rgba(0,0,0,.6);
 }
 
 .card img{
   width:100%;
-  height:130px;
+  height:120px;
   object-fit:contain;
   background:#000;
-  padding:20px;
+  padding:18px;
 }
 
-/* CHANNEL NAME */
 .channel-name{
-  padding:14px;
+  padding:12px;
   text-align:center;
-  font-size:15px;
   font-weight:600;
-  color:#fff;
 }
 
-/* HIDE */
-.hidden{
-  display:none !important;
-}
+/* HIDDEN */
+.hidden{display:none !important}
 
 /* MOBILE */
 @media(max-width:768px){
-
-.hero{
-  height:55vh;
-  padding:30px 20px;
-}
-
-.hero h1{
-  font-size:36px;
-}
-
-.hero p{
-  font-size:15px;
-}
-
-.row{
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
-}
-
-.card img{
-  height:110px;
-}
-
+.hero{height:60vh;padding:30px 20px;}
+.hero h1{font-size:34px;}
+.row{grid-template-columns:repeat(2,1fr);}
 }
 </style>
+</head>
+
+<body>
 
 <!-- HERO -->
 <div class="hero">
-
   <div class="hero-content">
     <h1>Explora Canales en Vivo</h1>
+    <p>USA • Latino • Deportes • Kids</p>
 
-    <p>
-      USA • Latino • Deportes • Kids
-    </p>
-
-    <a class="discord-btn"
-       href="https://chris-jorge-televison2-e50ed69d.base44.app/live"
-       target="_blank">
-       Join Our Discord
+    <a class="discord-btn" href="https://chris-jorge-televison2-e50ed69d.base44.app/live" target="_blank">
+      Join Our Discord
     </a>
-
   </div>
-
 </div>
 
-<!-- CATEGORY BUTTONS -->
+<!-- CATEGORIES -->
 <div class="categories">
-
-  <div class="cat-btn active" onclick="filterCards('all',this)">
-    Todos
-  </div>
-
-  <div class="cat-btn" onclick="filterCards('usa',this)">
-    USA
-  </div>
-
-  <div class="cat-btn" onclick="filterCards('latino',this)">
-    Latino
-  </div>
-
-  <div class="cat-btn" onclick="filterCards('sports',this)">
-    Deportes
-  </div>
-
-  <div class="cat-btn" onclick="filterCards('kids',this)">
-    Kids
-  </div>
-
+  <div class="cat-btn active" onclick="filterCards('all',this)">Todos</div>
+  <div class="cat-btn" onclick="filterCards('usa',this)">USA</div>
+  <div class="cat-btn" onclick="filterCards('latino',this)">Latino</div>
+  <div class="cat-btn" onclick="filterCards('sports',this)">Deportes</div>
+  <div class="cat-btn" onclick="filterCards('kids',this)">Kids</div>
 </div>
 
 <!-- CHANNELS -->
 <div class="section">
-
 <div class="row">
 
 <!-- USA -->
-<a class="card usa" href="https://chrisjorgetelevison2.blogspot.com/p/abc7-news-new-york.html">
+<a class="card usa" href="#">
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/ABC7_New_York_logo.png">
   <div class="channel-name">ABC 7</div>
 </a>
 
 <!-- LATINO -->
-<a class="card latino" href="https://chrisjorgetelevison2.blogspot.com/p/ecuavisa.html">
+<a class="card latino" href="#">
   <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Ecuavisa_Logo_2019.png">
   <div class="channel-name">Ecuavisa</div>
 </a>
@@ -256,117 +200,20 @@ body{
   <div class="channel-name">Nick Jr</div>
 </a>
 
-<a class="card kids" href="https://raw.githubusercontent.com/ChrisJorgeTelevison2/ChrisJorgeTelevision2.com/refs/heads/main/espn1.html">
+<a class="card kids" href="#">
   <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Nickelodeon_2023_logo.svg">
   <div class="channel-name">Nickelodeon</div>
 </a>
 
 <!-- SPORTS -->
-<a class="card sports"
-href="https://chris-jorge-televison2-e50ed69d.base44.app/live">
-
-  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhXBgI9iAqwDgOHz_o14OLBn0BTGoXeErVg5GbkrV-zuVdLzQv2D7gqw8xaKVMNgoQgergOTYEUcPbbEfFXMSd9yilTPXLE0yEjmBLYODbyj_-P8o0mwEmQrbUmIfvQlZiLhIhUKtKQhGER-OfSY7xDjEekuxtD1-lUTqySBIEpcFot5VNpjNwIQ1j1sFmX/s1080/ChrisJorgeSportsTV.png">
-
-  <div class="channel-name">
-    Sports TV
-  </div>
-
-</a>
-
-<!-- ESPN -->
-<a class="card sports"
-href="https://chrisjorgetelevison2.github.io/ChrisJorgeTelevision2.com/espn1.html?v=2">
-
+<a class="card sports" href="#">
   <img src="https://logos-world.net/wp-content/uploads/2020/01/ESPN-Logo.png">
-
-  <div class="channel-name">
-    ESPN
-  </div>
-
+  <div class="channel-name">ESPN</div>
 </a>
 
-<!-- ESPN 2 -->
-<a class="card sports"
-href="https://chrisjorgetelevison2.blogspot.com/p/espn-2.html">
-
-  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVKwNqkaSVjywFb9NI0MmhyjuOWF2FOaJpHRxPQQ9Edo0GjdpTQXOfTRTIkwoh_3Tz3HGkmeOnyhXa8C63zC_l8Qfj6PUorRukC3pJGxBIOfpkAHH7F0-BOvWTU-_7UrHohbibLZS-rN8WIf4toLtLqT3owRfjUlBSW-UC5okg0nRK2mQC-hvVgPsYD4U/s320/espn2-ChrisJorgeTelevison2.png">
-
-  <div class="channel-name">
-    ESPN 2
-  </div>
-
-</a>
-
-<!-- ESPN 3 -->
-<a class="card sports"
-href="https://chrisjorgetelevison2.blogspot.com/p/espn3argentinan-channel.html">
-
-  <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/ESPN3_Logo.png">
-
-  <div class="channel-name">
-    ESPN 3
-  </div>
-
-</a>
-
-<!-- ESPN 4 -->
-<a class="card sports"
-href="https://chrisjorgetelevison2.blogspot.com/p/espn-4-argentinan-channel.html">
-
-  <img src="https://foros.forounivers.com/uploads/monthly_2024_02/large.ESPN4.png.eb49e6eecab0c1a9e2c758279e2a6784.png">
-
-  <div class="channel-name">
-    ESPN 4
-  </div>
-
-</a>
-
-<!-- ESPN 5 -->
-<a class="card sports"
-href="https://chrisjorgetelevison2.blogspot.com/p/espn-5-argentinan-channel.html">
-
-  <img src="https://foros.forounivers.com/uploads/monthly_2024_02/large.ESPN5.png.ea2cd93464664aceb6401ba5dcbf1f3a.png">
-
-  <div class="channel-name">
-    ESPN 5
-  </div>
-
-</a>
-
-<!-- ESPN 6 -->
-<a class="card sports"
-href="https://chrisjorgetelevison2.blogspot.com/p/espn-6-argentinan-channel.html">
-
-  <img src="https://foros.forounivers.com/uploads/monthly_2024_02/large.ESPN6.png.5952c88e89550d75dce469022802382d.png">
-
-  <div class="channel-name">
-    ESPN 6
-  </div>
-
-</a>
-
-<!-- ESPN 7 -->
-<a class="card sports"
-href="https://chrisjorgetelevison2.blogspot.com/p/espn-7-argentinan-channel.html">
-
-  <img src="https://foros.forounivers.com/uploads/monthly_2024_02/large.ESPN7.png.375178ffb0546e7726739cc46c854e09.png">
-
-  <div class="channel-name">
-    ESPN 7
-  </div>
-
-</a>
-
-<!-- ESPN PREMIUM -->
-<a class="card sports"
-href="https://chrisjorgetelevison2.blogspot.com/">
-
+<a class="card sports" href="#">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/ESPN_Premium_logo.svg/1200px-ESPN_Premium_logo.svg.png">
-
-  <div class="channel-name">
-    ESPN Premium
-  </div>
-
+  <div class="channel-name">ESPN Premium</div>
 </a>
 
 </div>
@@ -374,29 +221,20 @@ href="https://chrisjorgetelevison2.blogspot.com/">
 
 <script>
 function filterCards(category,el){
-
   let cards=document.querySelectorAll('.card');
 
   cards.forEach(card=>{
-
-    if(category==='all'){
+    if(category==='all' || card.classList.contains(category)){
       card.classList.remove('hidden');
-    }
-
-    else if(card.classList.contains(category)){
-      card.classList.remove('hidden');
-    }
-
-    else{
+    } else {
       card.classList.add('hidden');
     }
-
   });
 
-  document.querySelectorAll('.cat-btn').forEach(btn=>{
-    btn.classList.remove('active');
-  });
-
+  document.querySelectorAll('.cat-btn').forEach(btn=>btn.classList.remove('active'));
   el.classList.add('active');
 }
 </script>
+
+</body>
+</html>
