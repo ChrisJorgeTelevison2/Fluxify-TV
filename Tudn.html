@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Watch TUDN | Fluxify-TV</title>
+
+<script src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+
+<style>
+  body {
+    margin: 0;
+    background: #000;
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+  }
+
+  #player-container {
+    width: 100%;
+    max-width: 720px;
+    margin: 30px auto;
+    position: relative;
+  }
+
+  #overlay-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .watermark {
+    position: absolute;
+    z-index: 999;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  .top-left {
+    top: 10px;
+    left: 10px;
+    max-width: 140px;
+    max-height: 55px;
+  }
+
+  .watermark img {
+    width: 100%;
+    height: auto;
+  }
+
+  .channel-info {
+    max-width: 720px;
+    margin: 20px auto;
+    padding: 15px;
+    text-align: left;
+    color: #d1d5db;
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  .badge {
+    display: inline-block;
+    background: linear-gradient(135deg,#e50914,#ff5e00);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: white;
+  }
+</style>
+</head>
+
+<body>
+
+<div id="player-container">
+
+  <div id="overlay-title">TUDN Live</div>
+
+  <div id="player-wrapper"></div>
+
+  <div class="watermark top-left">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhH4RViNO5WYJnkh72TMJAte4E7CmlaSIQCe9mlmfH-R8R6eaxHH5Xm_SlY5ZI1yD6j1lqz8VLU7WbEWCDYqdpmf4iDrPtoSyTdJRGWvK8LacZ5cA_UO9x1Q-M_lZb-jZQSCRSoqHEf7kQ0Cm7Lz7itm6nMQzxqUvBfJRQCUccWUaeOJlI17nird00dgYOX/s320/fluxify.png" alt="Fluxify-TV">
+  </div>
+
+</div>
+
+<!-- DESCRIPTION -->
+<div class="channel-info">
+
+  <span class="badge">LIVE CHANNEL</span>
+
+  <h2>TUDN</h2>
+
+  <p>
+    TUDN is a leading Spanish-language sports network that delivers live coverage of football (soccer), 
+    including Liga MX, UEFA competitions, international friendlies, and major tournaments. 
+    It also features boxing, UFC, and sports news with expert analysis and commentary for fans across the Americas.
+  </p>
+
+</div>
+
+<script>
+  new Clappr.Player({
+    parentId: '#player-wrapper',
+    source: 'https://streaming-live-fcdn.api.prd.univisionnow.com/tudn/tudn.isml/hls/tudn.m3u8',
+    width: '100%',
+    height: 360,
+    autoPlay: true,
+    mute: true
+  });
+</script>
+
+</body>
+</html>
