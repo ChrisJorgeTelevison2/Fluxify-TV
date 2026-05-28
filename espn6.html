@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ESPN 6 Live | Fluxify-TV</title>
+
+  <link rel="icon" type="image/png" sizes="16x16"
+    href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhH4RViNO5WYJnkh72TMJAte4E7CmlaSIQCe9mlmfH-R8R6eaxHH5Xm_SlY5ZI1yD6j1lqz8VLU7WbEWCDYqdpmf4iDrPtoSyTdJRGWvK8LacZ5cA_UO9x1Q-M_lZb-jZQSCRSoqHEf7kQ0Cm7Lz7itm6nMQzxqUvBfJRQCUccWUaeOJlI17nird00dgYOX/s320/fluxify.png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background: radial-gradient(circle at top left,#1e293b,#0f172a 60%);
+      color:white;
+      min-height:100vh;
+      padding:30px 15px;
+    }
+
+    .container{max-width:1200px;margin:auto;}
+
+    .hero{text-align:center;margin-bottom:30px;}
+
+    .logo{
+      width:90px;height:90px;border-radius:24px;
+      margin-bottom:15px;
+      border:3px solid rgba(255,255,255,0.08);
+      box-shadow:0 10px 35px rgba(0,0,0,0.45);
+    }
+
+    .hero h1{
+      font-size:3rem;
+      font-weight:700;
+      background:linear-gradient(90deg,#e50914,#ff3c00);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      margin-bottom:8px;
+    }
+
+    .hero p{color:#cbd5e1;}
+
+    .player-card{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:24px;
+      overflow:hidden;
+      backdrop-filter:blur(14px);
+      box-shadow:0 20px 50px rgba(0,0,0,0.45);
+    }
+
+    .video-container{
+      position:relative;
+      width:100%;
+      aspect-ratio:16/9;
+      background:black;
+    }
+
+    .video-container iframe{
+      width:100%;
+      height:100%;
+      border:none;
+    }
+
+    .watermark{
+      position:absolute;
+      top:15px;
+      right:15px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 14px;
+      border-radius:14px;
+      background:rgba(0,0,0,0.6);
+      font-size:13px;
+      font-weight:600;
+      z-index:10;
+    }
+
+    .live-dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:#ff2d55;
+      box-shadow:0 0 8px #ff2d55;
+      animation:pulse 1.4s infinite;
+    }
+
+    @keyframes pulse{
+      0%{transform:scale(1);opacity:1;}
+      50%{transform:scale(1.4);opacity:.6;}
+      100%{transform:scale(1);opacity:1;}
+    }
+
+    .channel-info{
+      padding:25px;
+    }
+
+    .badge{
+      display:inline-block;
+      background:linear-gradient(135deg,#e50914,#ff5e00);
+      padding:7px 15px;
+      border-radius:999px;
+      font-size:.75rem;
+      font-weight:600;
+      margin-bottom:12px;
+    }
+
+    .channel-info h2{
+      font-size:2rem;
+      margin-bottom:10px;
+    }
+
+    .channel-info p{
+      line-height:1.8;
+      color:#d1d5db;
+    }
+
+    footer{
+      margin-top:40px;
+      text-align:center;
+      color:#94a3b8;
+      font-size:.9rem;
+    }
+
+    @media(max-width:768px){
+      .hero h1{font-size:2rem;}
+      .channel-info h2{font-size:1.5rem;}
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <img class="logo"
+      src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhH4RViNO5WYJnkh72TMJAte4E7CmlaSIQCe9mlmfH-R8R6eaxHH5Xm_SlY5ZI1yD6j1lqz8VLU7WbEWCDYqdpmf4iDrPtoSyTdJRGWvK8LacZ5cA_UO9x1Q-M_lZb-jZQSCRSoqHEf7kQ0Cm7Lz7itm6nMQzxqUvBfJRQCUccWUaeOJlI17nird00dgYOX/s320/fluxify.png"
+      alt="Fluxify-TV">
+
+    <h1>ESPN 6</h1>
+    <p>Extra live sports coverage including international matches, football, and multi-game broadcasts.</p>
+
+  </section>
+
+  <!-- PLAYER -->
+  <div class="player-card">
+
+    <div class="video-container">
+
+      <div class="watermark">
+        <span class="live-dot"></span>
+        FLUXIFY-TV LIVE
+      </div>
+
+      <iframe
+        src="https://anym3u8player.com/ultimate-player-generator/player.php?player=clappr&url=https%3A%2F%2Fcors.globetv.app%2Fhttp%3A%2F%2F181.118.153.15%3A8000%2Fplay%2Fns99%2Findex.m3u8&controls=auto&theme=default&logo=1&logo_url=https%3A%2F%2Fblogger.googleusercontent.com%2Fimg%2Fb%2FR29vZ2xl%2FAVvXsEhH4RViNO5WYJnkh72TMJAte4E7CmlaSIQCe9mlmfH-R8R6eaxHH5Xm_SlY5ZI1yD6j1lqz8VLU7WbEWCDYqdpmf4iDrPtoSyTdJRGWvK8LacZ5cA_UO9x1Q-M_lZb-jZQSCRSoqHEf7lzJz8u7g/s320/fluxify.png"
+        allow="autoplay; fullscreen"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+
+    <!-- INFO -->
+    <div class="channel-info">
+
+      <span class="badge">LIVE CHANNEL</span>
+
+      <h2>ESPN 6</h2>
+
+      <p>
+        ESPN 6 on Fluxify-TV provides additional sports coverage, focusing on international events, live football matches, and simultaneous game broadcasts when major sports overlap across networks.
+      </p>
+
+    </div>
+
+  </div>
+
+  <footer>
+    © 2026 Fluxify-TV • All Rights Reserved
+  </footer>
+
+</div>
+
+</body>
+</html>
