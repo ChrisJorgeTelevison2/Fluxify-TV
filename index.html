@@ -82,6 +82,72 @@ body {
   color: #fff;
 }
 
+/* EVENTS SECTION */
+.events-section {
+  padding: 25px 20px;
+}
+
+.events-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.events-row {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+}
+
+.events-row::-webkit-scrollbar {
+  height: 6px;
+}
+
+.events-row::-webkit-scrollbar-thumb {
+  background: #1f80e0;
+  border-radius: 10px;
+}
+
+.event-card {
+  min-width: 220px;
+  background: #141b2d;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #fff;
+  position: relative;
+  transition: 0.3s;
+}
+
+.event-card img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+}
+
+.event-card:hover {
+  transform: scale(1.05);
+}
+
+.event-name {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.event-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: red;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 5px;
+  font-weight: 700;
+}
+
 /* GRID OF CHANNELS */
 .section {
   padding: 30px 20px;
@@ -129,7 +195,6 @@ body {
   .hero p { font-size: 16px; }
   .row { grid-template-columns: repeat(2,1fr); }
 }
-
 </style>
 </head>
 <body>
@@ -151,6 +216,42 @@ body {
   <div class="cat-btn" onclick="filterCards('sports', this)">Deportes</div>
   <div class="cat-btn" onclick="filterCards('kids', this)">Kids</div>
 </div>
+
+<!-- EVENTS SECTION -->
+<section class="events-section">
+  <h2 class="events-title">Eventos en Vivo</h2>
+
+  <div class="events-row">
+
+    <a class="event-card" href="https://chrisjorgetelevison2.github.io/Fluxify-TV/eventos.html">
+      <img src="https://nextjs.fanatiz.com/fanatiz/strapi/production/Fanatiz_new_92171dc64b.png">
+      <span class="event-badge">EN VIVO</span>
+      <div class="event-name">Fanatiz Evento 1</div>
+    </a>
+
+    <a class="event-card" href="https://chrisjorgetelevison2.github.io/Fluxify-TV/eventos2.html">
+      <img src="https://nextjs.fanatiz.com/fanatiz/strapi/production/Fanatiz_new_92171dc64b.png">
+      <span class="event-badge">EN VIVO</span>
+      <div class="event-name">Fanatiz Evento 2</div>
+    </a>
+
+    <a class="event-card" href="https://chrisjorgetelevison2.github.io/Fluxify-TV/eventos3.html">
+      <img src="https://nextjs.fanatiz.com/fanatiz/strapi/production/Fanatiz_new_92171dc64b.png">
+      <div class="event-name">Fanatiz Evento 3</div>
+    </a>
+
+    <a class="event-card" href="https://chrisjorgetelevison2.github.io/Fluxify-TV/eventos4.html">
+      <img src="https://nextjs.fanatiz.com/fanatiz/strapi/production/Fanatiz_new_92171dc64b.png">
+      <div class="event-name">Fanatiz Evento 4</div>
+    </a>
+
+    <a class="event-card" href="https://chrisjorgetelevison2.github.io/Fluxify-TV/eventos5.html">
+      <img src="https://nextjs.fanatiz.com/fanatiz/strapi/production/Fanatiz_new_92171dc64b.png">
+      <div class="event-name">Fanatiz Evento 5</div>
+    </a>
+
+  </div>
+</section>
 
 <!-- CHANNELS -->
 <div class="section">
@@ -205,7 +306,7 @@ body {
       <div class="channel-name">ESPN 5</div>
     </a>
 
-    <!-- FANATIZ EVENTOS -->
+    <!-- FANATIZ EVENTOS (kept exactly as you had them) -->
     <a class="card sports" href="https://chrisjorgetelevison2.github.io/Fluxify-TV/eventos.html">
       <img src="https://nextjs.fanatiz.com/fanatiz/strapi/production/Fanatiz_new_92171dc64b.png" alt="Fanatiz Evento 1">
       <div class="channel-name">Fanatiz Evento 1</div>
@@ -243,21 +344,17 @@ body {
       <div class="channel-name">Fox Sports 1 (USA)</div>
     </a>
 
-    <!-- ⭐⭐⭐ NUEVOS: DSPORTS ⭐⭐⭐ -->
-
-    <!-- DSPORTS 1 -->
+    <!-- DSPORTS -->
     <a class="card sports" href="https://chrisjorgetelevison2.github.io/Fluxify-TV/Dsports.html">
       <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/DSports_logo.png" alt="DSports 1">
       <div class="channel-name">DSports 1</div>
     </a>
 
-    <!-- DSPORTS 2 -->
     <a class="card sports" href="https://chrisjorgetelevison2.github.io/Fluxify-TV/Dsports2.htm/">
       <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/DSports_logo.png" alt="DSports 2">
       <div class="channel-name">DSports 2</div>
     </a>
 
-    <!-- DSPORTS+ -->
     <a class="card sports" href="https://chrisjorgetelevison2.github.io/Fluxify-TV/Dsports+.html">
       <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/DSports_logo.png" alt="DSports+">
       <div class="channel-name">DSports+</div>
