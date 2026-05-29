@@ -1,0 +1,89 @@
+<!--DOCTYPE html-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Watch EDCF</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: white;
+      text-align: center;
+      font-family: sans-serif;
+    }
+
+    #player-container {
+      width: 100%;
+      max-width: 640px;
+      margin: 20px auto;
+      position: relative;
+    }
+
+    #overlay-title {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .watermark {
+      position: absolute;
+      z-index: 999;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .top-left {
+      top: 10px;
+      left: 10px;
+      max-width: 150px;   /* bigger logo */
+      max-height: 60px;   /* bigger logo */
+    }
+
+    .watermark img {
+      max-width: 100%;
+      max-height: 100%;
+      background: transparent; /* ensure transparency */
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="player-container">
+    <div id="overlay-title">EDCF</div>
+    <div id="player-wrapper"></div>
+  </div>
+
+  <script>
+    const tvIcon = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiKKulybluDSRDdbHlu3Wc0-pBUdoznxSJzbThCPXjLp6tMGIKhjFtL_2Vm1ozc9NyRHjSoHedrAIrkbUNwhkS-0t90L858KWuIE9O23sM_40quv_AdvEw9A9Xk0aUgo64hW2obj509C50QGnpvaAT3yJVra6r4Gd5a2tGyCddzaxvDk5wpPU8NLYm7wLA/s320/ChrisJorgeTelevison2-icon.png';
+
+    const TVWatermarkPlugin = Clappr.UIContainerPlugin.extend({
+      name: 'tv_watermark',
+      initialize() {
+        this.render();
+      },
+      render() {
+        // Top-left watermark only
+        const topLeft = document.createElement('div');
+        topLeft.className = 'watermark top-left';
+        topLeft.innerHTML = `<img src="${tvIcon}" />`;
+        this.container.$el.append(topLeft);
+      }
+    });
+
+    new Clappr.Player({
+      parentId: '#player-wrapper',
+      source: 'https://pr745.streamingtv339.com/fanatiz2/tracks-v1a1/mono.m3u8',
+      poster: '',
+      mute: true,
+      height: 360,
+      width: '100%',
+      plugins: [TVWatermarkPlugin]
+    });
+  </script>
+
+</body>
+</html>
