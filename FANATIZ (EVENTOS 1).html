@@ -8,24 +8,31 @@
   <script src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
 
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
       background: #000;
       color: white;
-      text-align: center;
       font-family: sans-serif;
+      overflow: hidden; /* remove scrollbars */
     }
 
     #player-container {
-      width: 100%;
-      max-width: 640px;
-      margin: 20px auto;
       position: relative;
+      width: 100%;
+      height: 100%;
     }
 
     #overlay-title {
-      margin-bottom: 10px;
-      font-size: 20px;
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px;
+      z-index: 1000;
+      pointer-events: none;
     }
 
     .watermark {
@@ -57,13 +64,18 @@
       max-height: 100%;
       background: transparent;
     }
+
+    #player-wrapper {
+      width: 100%;
+      height: 100%;
+    }
   </style>
 </head>
 
 <body>
 
   <div id="player-container">
-    <div id="overlay-title">FANATIZ (EVENTOS 1).</div>
+    <div id="overlay-title">FANATIZ (EVENTOS 1)</div>
     <div id="player-wrapper"></div>
   </div>
 
@@ -76,11 +88,9 @@
 
     const TVWatermarkPlugin = Clappr.UIContainerPlugin.extend({
       name: 'tv_watermark',
-
       initialize() {
         this.render();
       },
-
       render() {
         // Top-left watermark
         const topLeft = document.createElement('div');
@@ -101,9 +111,10 @@
       source: 'https://pr745.streamingtv339.com/fanatiz2/tracks-v1a1/mono.m3u8',
       poster: '',
       mute: true,
-      height: 700,
-      width: '700%',
-      plugins: [TVWatermarkPlugin]
+      height: '100%',
+      width: '100%',
+      plugins: [TVWatermarkPlugin],
+      autoPlay: true
     });
   </script>
 
