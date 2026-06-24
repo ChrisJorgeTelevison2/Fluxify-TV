@@ -1,85 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fluxify MultiView</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Fluxify TV Multiview</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0f172a;
+  font-family: Inter, sans-serif;
+  background: radial-gradient(circle at top, #1e293b, #0f172a);
   color: white;
-  padding: 20px;
 }
 
-h1 {
+/* Header */
+header {
   text-align: center;
-  margin-bottom: 20px;
+  padding: 30px 20px 10px;
 }
 
+header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+header p {
+  margin-top: 6px;
+  opacity: 0.7;
+}
+
+/* Controls */
 .controls {
   display: flex;
   justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  padding: 20px;
 }
 
-select, button {
-  padding: 10px;
-  border-radius: 8px;
+select {
+  padding: 12px;
+  border-radius: 10px;
   border: none;
+  background: #111827;
+  color: white;
+  outline: none;
+  min-width: 260px;
 }
 
 button {
-  background: #2563eb;
-  color: white;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: none;
   cursor: pointer;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  font-weight: 600;
+  transition: 0.2s;
 }
 
 button:hover {
-  background: #1d4ed8;
+  transform: scale(1.05);
 }
 
+/* Grid */
 .stream-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 16px;
+  padding: 20px;
 }
 
+/* Card */
 .stream-card {
   position: relative;
   aspect-ratio: 16/9;
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
-  background: #111827;
+  background: #0b1220;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: 0.2s;
 }
 
+.stream-card:hover {
+  transform: scale(1.02);
+}
+
+/* iframe */
 iframe {
   width: 100%;
   height: 100%;
   border: none;
 }
 
+/* remove button */
 .remove {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: red;
+  background: rgba(255,0,0,0.8);
   border: none;
   color: white;
   padding: 6px 10px;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
+  font-weight: bold;
+}
+
+.remove:hover {
+  background: red;
+}
+
+/* footer hint */
+.footer {
+  text-align: center;
+  opacity: 0.5;
+  font-size: 12px;
+  padding: 10px 0 30px;
 }
 </style>
 </head>
 
 <body>
 
-<h1>🎥 Fluxify MultiView Selector</h1>
+<header>
+  <h1>🎥 Fluxify TV</h1>
+  <p>Build your own live multiview experience</p>
+</header>
 
 <div class="controls">
   <select id="streamSelect">
@@ -100,10 +151,14 @@ iframe {
     </option>
   </select>
 
-  <button onclick="addStream()">Add Stream</button>
+  <button onclick="addStream()">＋ Add Stream</button>
 </div>
 
 <div class="stream-grid" id="grid"></div>
+
+<div class="footer">
+  Click “Add Stream” to build your custom multiview layout
+</div>
 
 <script>
 function addStream() {
