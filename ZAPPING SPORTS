@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bitmovin Player Demo</title>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="text/html; charset=utf-8" />
+
+  <!-- Bitmovin Player -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bitmovin-player@8/bitmovinplayer.js"></script>
+
+  <style>
+    .player-wrapper {
+      width: 90%;
+      margin: 20px auto;
+      box-shadow: 0 0 30px rgba(0,0,0,0.7);
+    }
+  </style>
+</head>
+<body>
+<div class="player-wrapper">
+  <div id="player"></div>
+</div>
+
+<script type="text/javascript">
+  var conf = {
+    key: '0f384a6a-a6d1-4f56-a281-bde3c954a131',
+    analytics: {
+      key: '72ff346a-f0b1-4b92-b795-8adf146c7afc',
+      title: 'Deportivo Cuenca VS Barcelona SC (ZAPPING SPORTS)',
+      videoId: 'wizard-Deportivo_Cuenca_VS_Barcelona_-1783213406194',
+    },
+  };
+
+  var source = {
+    title: 'Deportivo Cuenca VS Barcelona SC (ZAPPING SPORTS)',
+    hls: 'https://live20.bozztv.com/giatv/giatv-Eventos-ChrisJorgeTelevison2/Eventos-ChrisJorgeTelevison2/chunks.m3u8',
+  };
+
+  var player = new bitmovin.player.Player(document.getElementById('player'), conf);
+  player.load(source);
+</script>
+
+</body>
+</html>
